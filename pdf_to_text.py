@@ -9,13 +9,15 @@ import numpy as np
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 # Đường dẫn đến file PDF
-pdf_path = "D:/Project/AI/OCR/images/1555568099824_Nhãn 94-763-769.pdf"
+pdf_path = "./images/2024_12_30 9_21 PM Office Lens.pdf"
+save_text_path = "extracted_content/extracted_text_Natri.txt"
+save_temp_image_path = "temp_images_Natri"
 
 # Chuyển đổi PDF thành danh sách các ảnh
 images = convert_from_path(pdf_path)
 
 # Tạo thư mục để lưu ảnh tạm thời (nếu cần)
-output_dir = "temp_images"
+output_dir = save_temp_image_path
 os.makedirs(output_dir, exist_ok=True)
 
 # Kết quả OCR
@@ -50,7 +52,7 @@ for i, image in enumerate(images):
     print(f"Trang {i+1} đã xong.")
 
 # Lưu kết quả vào file văn bản (nếu cần)
-with open("extracted_content/extracted_text1.txt", "w", encoding="utf-8") as f:
+with open(save_text_path, "w", encoding="utf-8") as f:
     f.write(extracted_text)
 
 
